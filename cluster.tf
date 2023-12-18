@@ -1,6 +1,6 @@
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.20.0"
+  version = "19.21.0"
 
   cluster_name                   = var.cluster_name
   cluster_version                = "1.26"
@@ -14,10 +14,10 @@ module "eks" {
 
   eks_managed_node_groups = {
     main = {
-      desired_capacity = 2
-      max_capacity     = 3
-      min_capacity     = 2
-      instance_type    = var.instance_type
+      min_size         = 2
+      max_size         = 3
+      desired_size     = 2
+      instance_types   = [ var.instance_type ]
       capacity_type    = "ON_DEMAND"
     }
   }
